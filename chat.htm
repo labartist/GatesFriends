@@ -13,8 +13,6 @@ body {margin: 0;
   font-size: 16px;
 }
 
-
-
 div {
     border: 1px solid gray;
     padding: 80px;
@@ -44,7 +42,7 @@ p {
 h1 {
     text-align: center;
     text-transform: uppercase;
-    color: #4CAF50;
+    color: rgb(38, 100, 40);
 }
 
 h3 {
@@ -58,7 +56,7 @@ input {
     border: none;
     font-family: sans-serif;
     color: #000;
-    padding: 15px 32px;
+    padding: 15px 500px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -95,7 +93,6 @@ ul.topnav li a.Request:hover, a.Request:active {background-color: #4CAF50;}
 ul.topnav li a.Appointment:hover, a.Appointment:active {background-color: #4CAF50;}
 ul.topnav li a.Other:hover, a.Other:active {background-color: #4CAF50;}
 ul.topnav li a.Chat:hover, a.Chat:active {background-color: #4CAF50;}
-
 ul.topnav li.right {float: right;}
 
 @media screen and (max-width: 600px){
@@ -117,12 +114,12 @@ ul.topnav li.right {float: right;}
 </nav>
 <body>
         <div id="output"></div>
-
+      
         <div id="container">
-            <input type="text" id="input" value="">
+            <input type="text" id="input" value="" item-width="500">
         </div>
-
-        <!-- jquery for enter key press -->
+        
+        <!-- jquery for enter key press -->      
         <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script></body>
 <script>
     var questionNum = 0;									// keep count of question, used for IF condition.
@@ -131,23 +128,26 @@ ul.topnav li.right {float: right;}
     var output = document.getElementById('output');			// store id="output" in output variable
     output.innerHTML = question;							// ouput first question
 
-function bot() {
+function bot() { 
     var input = document.getElementById("input").value;
     console.log(input);
 
     if (questionNum == 0) {
-    output.innerHTML = '<h1>hello ' + input + '</h1>';      // output response
+    output.innerHTML = '<h1>Hello ' + input + '!</h1>';      // output response
     document.getElementById("input").value = "";   		    // clear text box
-    question = '<h1>how old are you?</h1>';			        // load next question
+    question = '<h1>Do you need a doctors Appointment?</h1>';	// load next question		
     setTimeout(timedQuestion, 2000);					    // output next question after 2sec delay
     }
 
     else if (questionNum == 1) {
-    output.innerHTML = '<h1>That means you were born in ' + (2018 - input) + '</h1>';
-    document.getElementById("input").value = "";
-    question = '<h1>where are you from?</h1>';
-    setTimeout(timedQuestion, 2000);
-    }
+        if (input == 'yes') {
+            output.innerHTML = '<h1> Hold on while we bring up the timetable...</h1>';
+        } else {
+            output.innerHTML = '<h1> For more info access: about the vaccine</h1><br><h2>To request Vaccine or a doctors appointment access the banner.<h2>';
+        }
+    document.getElementById("input").value = "";      	
+    setTimeout(timedQuestion, 1000000);
+    }   
 }
 
 function timedQuestion() {
