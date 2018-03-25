@@ -166,6 +166,8 @@ ul.topnav li a.About:hover, a.About:active {background-color: #4CAF50;}
 ul.topnav li a.Locate:hover, a.Locate:active {background-color: #4CAF50;}
 ul.topnav li a.Request:hover, a.Request:active {background-color: #4CAF50;}
 ul.topnav li a.Appointment:hover, a.Appointment:active {background-color: #4CAF50;}
+ul.topnav li a.Other:hover, a.Other:active {background-color: #4CAF50;}
+ul.topnav li a.Chat:hover, a.Chat:active {background-color: #4CAF50;}
 
 ul.topnav li.right {float: right;}
 
@@ -178,10 +180,12 @@ ul.topnav li.right {float: right;}
 <body>
 <ul class="topnav">
   <li><a class="Home" href="home.htm"><p>Home</p></a></li>
-  <li><a class="About" href="about.htm"><p>About the Vaccine</p></a></li>
+  <li><a class="About" href="about.htm"><p>About the Website</p></a></li>
   <li><a class="Locate" href="contactUs.htm"><p>Locate Us</p></a></li>
   <li><a class="Request" href="requestForm.htm"><p>Request Vaccine</p></a></li>
   <li><a class="Appointment" href="appointment.htm"><p>Doctor's Appointment</p></a></li>
+  <li><a class="Other" href="other.htm"><p>Other Services</p></a></li>
+  <li><a class="Chat" href="chat.htm"><p>Live Chat</p></a></li>
 </ul>
 </nav>
 
@@ -190,15 +194,15 @@ ul.topnav li.right {float: right;}
 <P><b>Please fill out this questionaire:</b>
 
 <form id="fid" method=post action="/action_page.php">
-  <P>Full Name: <input name="name" required size="32">
-  <P>Date of Birth: <input name="bday" required type="date">
+  <P>Full Name: <input name="name" size="32">
+  <P>Date of Birth: <input name="bday" type="date">
   <P>Gender:
-  <P><input name="gender" required type=radio> Male
-  <P><input name="gender" required type=radio> Female
-  <P><input name="gender" required type=radio> Other
+  <P><input name="gender" type=radio> Male
+  <P><input name="gender" type=radio> Female
+  <P><input name="gender" type=radio> Other
 
   <P>Country of Residence:
-  <select name="country" required>
+  <select name="country">
     <option value="Ethiopia">Ethiopia</option>
     <option value="Nigeria">Nigeria</option>
     <option value="South Africa">South Africa</option>
@@ -214,7 +218,7 @@ ul.topnav li.right {float: right;}
   <P><input type="checkbox" name="vaccine" value="hepatitisB"> Hepatitis B<br>
   <P><input type="checkbox" name="vaccine" value="hinfluB"> Haemophilus influenzae type B<br>
   <P><input type="checkbox" name="vaccine" value="yellowF"> Yellow Fever<br>
-    
+
   <!--<p>Other - List Vaccine(s) Not Listed: <input type="text" name="vaccine"><br>-->
     <form>
             <p>
@@ -228,7 +232,7 @@ ul.topnav li.right {float: right;}
 
 
 <p><a href="tyForm.htm" class="button" onclick="document.getElementById('fid').submit();">Submit</a>
-  
+
 </form>
 </body>
 

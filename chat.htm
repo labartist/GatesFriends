@@ -93,6 +93,8 @@ ul.topnav li a.About:hover, a.About:active {background-color: #4CAF50;}
 ul.topnav li a.Contact:hover, a.Contact:active {background-color: #4CAF50;}
 ul.topnav li a.Request:hover, a.Request:active {background-color: #4CAF50;}
 ul.topnav li a.Appointment:hover, a.Appointment:active {background-color: #4CAF50;}
+ul.topnav li a.Other:hover, a.Other:active {background-color: #4CAF50;}
+ul.topnav li a.Chat:hover, a.Chat:active {background-color: #4CAF50;}
 
 ul.topnav li.right {float: right;}
 
@@ -105,20 +107,22 @@ ul.topnav li.right {float: right;}
 
 <ul class="topnav">
   <li><a class="Home" href="home.htm"><p>Home</p></a></li>
-  <li><a class="About" href="about.htm"><p>About the Vaccine</p></a></li>
+  <li><a class="About" href="about.htm"><p>About the Website</p></a></li>
   <li><a class="Contact" href="contactUs.htm"><p>Locate Us</p></a></li>
   <li><a class="Request" href="requestForm.htm"><p>Request Vaccine</p></a></li>
   <li><a class="Appointment" href="appointment.htm"><p>Doctor's Appointment</p></a></li>
+  <li><a class="Other" href="other.htm"><p>Other Services</p></a></li>
+  <li><a class="Chat" href="chat.htm"><p>Live Chat</p></a></li>
 </ul>
 </nav>
 <body>
         <div id="output"></div>
-      
+
         <div id="container">
             <input type="text" id="input" value="">
         </div>
-        
-        <!-- jquery for enter key press -->      
+
+        <!-- jquery for enter key press -->
         <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script></body>
 <script>
     var questionNum = 0;									// keep count of question, used for IF condition.
@@ -127,23 +131,23 @@ ul.topnav li.right {float: right;}
     var output = document.getElementById('output');			// store id="output" in output variable
     output.innerHTML = question;							// ouput first question
 
-function bot() { 
+function bot() {
     var input = document.getElementById("input").value;
     console.log(input);
 
     if (questionNum == 0) {
     output.innerHTML = '<h1>hello ' + input + '</h1>';      // output response
     document.getElementById("input").value = "";   		    // clear text box
-    question = '<h1>how old are you?</h1>';			        // load next question		
+    question = '<h1>how old are you?</h1>';			        // load next question
     setTimeout(timedQuestion, 2000);					    // output next question after 2sec delay
     }
 
     else if (questionNum == 1) {
     output.innerHTML = '<h1>That means you were born in ' + (2018 - input) + '</h1>';
-    document.getElementById("input").value = "";   
-    question = '<h1>where are you from?</h1>';					      	
+    document.getElementById("input").value = "";
+    question = '<h1>where are you from?</h1>';
     setTimeout(timedQuestion, 2000);
-    }   
+    }
 }
 
 function timedQuestion() {
