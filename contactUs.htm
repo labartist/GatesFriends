@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang = "en-us">
+<header>
+  <img src="https://imgur.com/rKUhvjj"
+  alt="Bill-Melinda-Gates-Foundation-Logo" style="width:490.5px; height:102px">
+</header>
+<head>
+  <nav>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {margin: 0;
+  background-image: url("https://i.imgur.com/rKUhvjj.jpg");
+  font-size: 16px;
+}
+
+#map {
+        height: 400px;
+        width: 95.7%;
+        padding: 30px;
+        align-content: center;
+        border: 2px solid black;
+       }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+p {
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 3px;
+    text-shadow: 0.2px 0.2px black;
+}
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #4CAF50;
+}
+
+h2 {
+    text-align: left;
+    text-transform: uppercase;
+    color: #4CAF50;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.Home:hover, a.Home:active {background-color: #4CAF50;}
+ul.topnav li a.About:hover, a.About:active {background-color: #4CAF50;}
+ul.topnav li a.Locate:hover, a.Locate:active {background-color: #4CAF50;}
+ul.topnav li a.Request:hover, a.Request:active {background-color: #4CAF50;}
+ul.topnav li a.Appointment:hover, a.Appointment:active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+}
+</style>
+</head>
+
+<ul class="topnav">
+  <li><a class="Home" href="home.htm"><p>Home</p></a></li>
+  <li><a class="About" href="about.htm"><p>About the Vaccine</p></a></li>
+  <li><a class="Locate" href="contactUs.htm"><p>Locate Us</p></a></li>
+  <li><a class="Request" href="requestForm.htm"><p>Request Vaccine</p></a></li>
+  <li><a class="Appointment" href="appointment.htm"><p>Doctor's Appointment</p></a></li>
+</ul>
+</nav>
+<body>
+  <h1> Where to get the vaccine from?</h1></p>
+  <table align="center">
+  <tr>
+    <th><center><p><br />
+      Hours of Operation<br /> <br />
+      Mon-Fri: 9AM - 9PM<br />
+        Sat: 11AM - 6PM<br />
+        Sunday: Closed</center></p></th>
+  </tr>
+</table>
+  <p>Here are the locations from where you can get the vaccines.<br />
+    Please click on one of the following to view availabilty and details of the <br />
+    vaccines stored at that location:
+    <ul><li><a href="nigeriaDatabase.htm"><p>Nigeria</p></a>
+      <li><a href="ethiopiaDatabase.htm"><p>Ethiopia</p></a>
+      <li><a href="southAfricaDatabase.htm"><p>South Africa</p></a></ul>
+  </p>
+  <div id="map"></div>
+         <script src="script.js"></script>
+      <script>
+
+        function initMap() {
+
+          var nigeria = {
+     info: '<strong>Nigeria Office</strong><br>\
+           43 Agadez Cres, Wuse, Abuja, Nigeria<br>\
+           <a href="https://goo.gl/3YjMZM">Get Directions</a> <br /><a href = "nigeriaDatabase.htm">Vaccine Availability and details</a>',
+     lat: 9.071968,
+     long: 7.470572
+   };
+
+    var ethiopia = {
+     info: '<strong>Ethiopia Office</strong><br>\
+           ILRI, Addis Ababa, Ethiopia<br>\
+           <a href="https://goo.gl/hG5X5U">Get Directions</a><br /> <a href = "ethiopiaDatabase.htm">Vaccine Availability and details</a>',
+     lat: 9.015207,
+     long: 38.814011
+   };
+
+    var southAfrica = {
+     info: '<strong>South Africa Office</strong><br>\
+           4, The Firs, Biermann Avenue, Rosebank, <br>Johannesburg, 2196, South Africa<br>\
+           <a href="https://goo.gl/CfCW5e">Get Directions</a><br /> <a href = "southAfricaDatabase.htm">Vaccine Availability and details</a>',
+     lat: -26.143643,
+     long: 28.042400
+   };
+
+    var locations = [
+        [nigeria.info, nigeria.lat, nigeria.long, 0],
+        [ethiopia.info, ethiopia.lat, ethiopia.long, 1],
+        [southAfrica.info, southAfrica.lat, southAfrica.long, 2],
+      ];
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 3.2,
+        center: new google.maps.LatLng(-9.999224, 22.241618),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow({});
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+
+     marker = new google.maps.Marker({
+       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+       map: map,
+       title: 'Click here for more details.'
+     });
+
+     google.maps.event.addListener(marker, 'click', (function (marker, i) {
+       return function () {
+         infowindow.setContent(locations[i][0]);
+         infowindow.open(map, marker);
+       }
+     })(marker, i));
+   }
+  }
+
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi_UzPw5MXk15ucZaZiN9xns8ZOAAoS8I&callback=initMap">
+  </script>
+
+
+</body>
+</html>
